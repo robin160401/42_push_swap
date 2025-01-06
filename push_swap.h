@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/06 18:21:45 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/06 18:40:17 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ typedef struct s_stack
 }					t_stack;
 
 void	create_stack_a(t_stack **stack_a, int argc, char **argv);
-t_stack	*ft_newstacknode(int nbr);
 
 #endif
