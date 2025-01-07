@@ -6,11 +6,11 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:37:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/06 18:32:55 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/07 10:53:20 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_stack	*ft_newstacknode(int nbr)
 {
@@ -55,9 +55,24 @@ void	create_stack_a(t_stack **stack_a, int argc, char **argv)
 		if (i == 1)
 			*stack_a = ft_newstacknode(atoi(argv[i]));
 		else
-		{
 			ft_stackadd_back(stack_a, ft_newstacknode(atoi(argv[i])));
-		}
+		i++;
+	}
+}
+
+void	create_stack_a_from_string(t_stack **stack_a, char **argv)
+{
+	char	**numbers;
+	int		i;
+
+	numbers = ft_split(argv[1], ' ');
+	i = 0;
+	while (numbers[i])
+	{
+		if (i == 0)
+			*stack_a = ft_newstacknode(atoi(numbers[i]));
+		else
+			ft_stackadd_back(stack_a, ft_newstacknode(atoi(numbers[i])));
 		i++;
 	}
 }
