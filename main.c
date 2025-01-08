@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:28:00 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/08 08:49:35 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/08 16:28:06 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_stack(t_stack *stack)
 {
 	while (stack)
 	{
-		printf("%d \n", stack->nbr);
+		printf("%d | %d\n", stack->nbr, stack->index);
 		stack = stack->next;
 	}
 }
@@ -34,9 +34,10 @@ int	main(int argc, char **argv)
 		create_stack_a_from_string(&stack_a, argv);
 	else
 		create_stack_a(&stack_a, argc, argv);
-	push_swap(&stack_a, &stack_b);
+	printf("%i\n", biggest_nbr(stack_a));
+	// push_swap(&stack_a, &stack_b);
 	print_stack(stack_a);
-	printf("-------------- stack a ist oben stack b ist unten \n");
-	print_stack(stack_b);
+	// printf("-------------- stack a ist oben stack b ist unten \n");
+	// print_stack(stack_b);
 	return (0);
 }
