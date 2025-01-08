@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:38:12 by rstumpf           #+#    #+#             */
-/*   Updated: 2024/11/02 14:04:15 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/07 13:02:42 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,4 @@ char	*ft_strrchr(const char *s, int c)
 		s++;
 	}
 	return (NULL);
-}
-int main() {
-    const char *str = "Hello, World!";
-
-    char *result = ft_strrchr(str, 'o');
-
-    printf("%s",result);
-
-    return 0;
 }

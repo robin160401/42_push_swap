@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:28:00 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/07 10:51:10 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/07 16:06:49 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int	main(int argc, char **argv)
 		create_stack_a_from_string(&stack_a, argv);
 	else
 		create_stack_a(&stack_a, argc, argv);
+	push_swap(&stack_a, &stack_b);
 	print_stack(stack_a);
+	printf("-------------- \n");
+	print_stack(stack_b);
 	return (0);
 }
