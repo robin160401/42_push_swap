@@ -6,37 +6,48 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:00:12 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/07 16:56:39 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/08 10:43:27 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	swap(t_stack **stack)
+int	swap(t_stack **stack)
 {
 	t_stack	*temp;
 	t_stack	*temp2;
 
 	if (ft_stacksize(*stack) < 2)
-		return ;
+		return (-1);
 	temp = *stack;
 	temp2 = temp->next;
 	temp->next = temp2->next;
 	temp2->next = temp;
 	*stack = temp2;
 	if (temp2->stack == 'A')
-		write(1, "sa", 2);
+		write(1, "sa\n", 3);
 	else
-		write(1, "sb", 2);
+		write(1, "sb\n", 3);
+	return (0);
 }
 
-void	push_pop(t_stack **pushstack, t_stack **popstack)
+int	push_pop(t_stack **pushstack, t_stack **popstack)
 {
 	t_stack	*temp;
 
 	if (popstack == NULL)
-		return ;
+		return (-1);
 	temp = *popstack;
+	if (temp->stack == 'A')
+	{
+		temp->stack = 'B';
+		write(1, "pb\n", 3);
+	}
+	else
+	{
+		temp->stack = 'A';
+		write(1, "pa\n", 3);
+	}
 	*popstack = temp->next;
 	if (*pushstack == NULL)
 	{
@@ -45,28 +56,43 @@ void	push_pop(t_stack **pushstack, t_stack **popstack)
 	}
 	else
 		ft_stackadd_front(pushstack, temp);
+	return (0);
 }
 
-void	rotate(t_stack **stack)
+int	rotate(t_stack **stack)
 {
 	t_stack	*temp;
 
+	if (ft_stacksize(*stack) < 2)
+		return (-1);
 	temp = *stack;
+	if (temp->stack == 'A')
+		write(1, "ra\n", 3);
+	else
+		write(1, "rb\n", 3);
 	*stack = temp->next;
 	temp->next = NULL;
 	ft_stackadd_back(stack, temp);
+	return (0);
 }
 
-void	reverse_rotate(t_stack **stack)
+int	reverse_rotate(t_stack **stack)
 {
 	t_stack	*temp1;
 	t_stack	*temp2;
 
+	if (ft_stacksize(*stack) < 2)
+		return (-1);
 	temp1 = ft_stacklast(*stack);
 	temp2 = *stack;
+	if (temp2->stack == 'A')
+		write(1, "rra\n", 4);
+	else
+		write(1, "rrb\n", 4);
 	while (temp2->next != temp1)
 		temp2 = temp2->next;
 	temp2->next = NULL;
 	temp1->next = *stack;
 	*stack = temp1;
+	return (0);
 }
