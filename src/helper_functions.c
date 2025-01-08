@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:04:16 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/08 16:26:12 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/08 17:15:58 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,44 @@ int	biggest_nbr(t_stack *stack)
 	return (big);
 }
 
-int	get_index(t_stack *stack, int last_index_nbr)
+int	check_if_num_is_in_array(int num, int arr[])
+{
+	int	i;
+
+	i = 0; 
+	while (arr[i])
+	{
+		if (arr[i] == num)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	set_index(t_stack *stack)
 {
 	static int	index = 0;
-	int			actual_nbr;
+	static int	arr[1024];
 	int			lowest;
+	t_stack		*temp;
 
-	actual_nbr = stack->nbr;
+	lowest = INT_MAX;
+
+	temp = stack;
 	while (stack)
 	{
-		if (stack->nbr > last_index_nbr && stack->nbr < actual_nbr)
+		if (stack->nbr < lowest && check_if_num_is_in_array(stack->nbr, arr) == 0)
 			lowest = stack->nbr;
 		stack = stack->next;
 	}
+	index++;
+	arr[index] = lowest;
+	stack = temp;
 	while (stack)
 	{
 		if (stack->nbr == lowest)
-			return (stack->index = index, 0);
+			stack->index = index;
 		stack = stack->next;
 	}
-	index++;
-	return (0);
+	return (lowest);
 }

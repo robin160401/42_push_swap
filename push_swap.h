@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/08 16:18:32 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/08 17:16:31 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new);
 int		rotate(t_stack **stack);
 int		reverse_rotate(t_stack **stack);
 int		biggest_nbr(t_stack *stack);
-int		get_index(t_stack *stack, int last_index_nbr);
+int		set_index(t_stack *stack);
 
 
 #endif
