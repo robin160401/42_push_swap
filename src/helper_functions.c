@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:04:16 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/08 17:15:58 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/09 17:10:57 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,44 +28,41 @@ int	biggest_nbr(t_stack *stack)
 	return (big);
 }
 
-int	check_if_num_is_in_array(int num, int arr[])
-{
-	int	i;
-
-	i = 0; 
-	while (arr[i])
-	{
-		if (arr[i] == num)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	set_index(t_stack *stack)
+void	set_index(t_stack *stack)
 {
 	static int	index = 0;
-	static int	arr[1024];
 	int			lowest;
 	t_stack		*temp;
 
 	lowest = INT_MAX;
+	temp = stack;
+	while (stack)
+	{
+		if (stack->nbr < lowest && !stack->indexed)
+			lowest = stack->nbr;
+		stack = stack->next;
+	}
+	stack = temp;
+	while (stack)
+	{
+		if (stack->nbr == lowest && !stack->indexed)
+		{
+			stack->index = index;
+			stack->indexed = 1;
+		}
+		stack = stack->next;
+	}
+	index++;
+}
+
+void	set_all_indexes(t_stack *stack)
+{
+	t_stack	*temp;
 
 	temp = stack;
 	while (stack)
 	{
-		if (stack->nbr < lowest && check_if_num_is_in_array(stack->nbr, arr) == 0)
-			lowest = stack->nbr;
+		set_index(temp);
 		stack = stack->next;
 	}
-	index++;
-	arr[index] = lowest;
-	stack = temp;
-	while (stack)
-	{
-		if (stack->nbr == lowest)
-			stack->index = index;
-		stack = stack->next;
-	}
-	return (lowest);
 }

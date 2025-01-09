@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/08 17:16:31 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/09 17:10:42 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_stack
 	int				nbr;
 	char			stack;
 	int				index;
+	int				indexed;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -39,7 +40,8 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new);
 int		rotate(t_stack **stack);
 int		reverse_rotate(t_stack **stack);
 int		biggest_nbr(t_stack *stack);
-int		set_index(t_stack *stack);
+void	set_index(t_stack *stack);
+void	set_all_indexes(t_stack *stack);
 
 
 #endif
