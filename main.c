@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:28:00 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/09 17:11:35 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/09 18:17:23 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ int	main(int argc, char **argv)
 		create_stack_a_from_string(&stack_a, argv);
 	else
 		create_stack_a(&stack_a, argc, argv);
-	set_all_indexes(stack_a);
+	push_lowerhalf_to_b(&stack_a, &stack_b, set_all_indexes(stack_a));
+	printf("stack a \n");
 	print_stack(stack_a);
+	printf("------------ \n");
+	printf("stack b \n");
+	print_stack(stack_b);
 	return (0);
 }

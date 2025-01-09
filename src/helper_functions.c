@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:04:16 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/09 17:10:57 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/09 18:30:43 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	biggest_nbr(t_stack *stack)
 	return (big);
 }
 
-void	set_index(t_stack *stack)
+int	set_index(t_stack *stack)
 {
 	static int	index = 0;
 	int			lowest;
@@ -53,16 +53,37 @@ void	set_index(t_stack *stack)
 		stack = stack->next;
 	}
 	index++;
+	return (index);
 }
 
-void	set_all_indexes(t_stack *stack)
+int	set_all_indexes(t_stack *stack)
 {
 	t_stack	*temp;
+	int		len;
 
 	temp = stack;
+	len = 0;
 	while (stack)
 	{
-		set_index(temp);
+		len = set_index(temp);
 		stack = stack->next;
+	}
+	return (len);
+}
+
+void	push_lowerhalf_to_b(t_stack **stack_a, t_stack **stack_b, int len)
+{
+	int		half;
+	int		i;
+
+	half = len / 2;
+	i = 0;
+	while (i < len)
+	{
+		if ((*stack_a)->index <= half)
+			push_pop(stack_b, stack_a);
+		else
+			rotate(stack_a);
+		i++;
 	}
 }
