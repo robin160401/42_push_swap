@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:17:51 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/23 10:44:34 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/23 14:20:30 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	low_to_top(t_stack **stack_a)
 	while ((*stack_a)->nbr != get_lowest_index(*stack_a)->nbr)
 	{
 		if (get_lowest_index(*stack_a)->over_median)
-			rotate(stack_a);
+			rotate(stack_a, 1);
 		else
-			reverse_rotate(stack_a);
+			reverse_rotate(stack_a, 1);
 	}
 }

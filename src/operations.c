@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:00:12 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/17 11:16:40 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/23 14:19:26 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,16 @@ int	push_pop(t_stack **pushstack, t_stack **popstack)
 	return (0);
 }
 
-int	rotate(t_stack **stack)
+int	rotate(t_stack **stack, int write_r)
 {
 	t_stack	*temp;
 
 	if (ft_stacksize(*stack) < 2)
 		return (-1);
 	temp = *stack;
-	if (temp->stack == 'A')
+	if (temp->stack == 'A' && write_r)
 		write(1, "ra\n", 3);
-	else
+	else if (temp->stack == 'B' && write_r)
 		write(1, "rb\n", 3);
 	*stack = temp->next;
 	temp->next = NULL;
@@ -76,7 +76,7 @@ int	rotate(t_stack **stack)
 	return (0);
 }
 
-int	reverse_rotate(t_stack **stack)
+int	reverse_rotate(t_stack **stack, int write_rr)
 {
 	t_stack	*temp1;
 	t_stack	*temp2;
@@ -85,9 +85,9 @@ int	reverse_rotate(t_stack **stack)
 		return (-1);
 	temp1 = ft_stacklast(*stack);
 	temp2 = *stack;
-	if (temp2->stack == 'A')
+	if (temp2->stack == 'A' && write_rr)
 		write(1, "rra\n", 4);
-	else
+	else if (temp2->stack == 'B' && write_rr)
 		write(1, "rrb\n", 4);
 	while (temp2->next != temp1)
 		temp2 = temp2->next;

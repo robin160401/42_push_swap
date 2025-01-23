@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/22 15:28:45 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/23 14:20:00 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b);
 char	set_stack_new_node(char stacknode);
 t_stack	*set_stack(t_stack *stacknode);
 void	ft_stackadd_front(t_stack **stack, t_stack *new);
-int		rotate(t_stack **stack);
-int		reverse_rotate(t_stack **stack);
+int		rotate(t_stack **stack, int write_r);
+int		reverse_rotate(t_stack **stack, int write_rr);
 int		sort_first_numbers(t_stack **stack_a);
 int		sort_3_numbers(t_stack **stack_a);
 t_stack	*get_highest_index(t_stack *stack);

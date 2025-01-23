@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:28:00 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/22 15:22:50 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/23 16:45:10 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,13 @@ int	main(int argc, char **argv)
 		create_stack_a_from_string(&stack_a, argv);
 	else
 		create_stack_a(&stack_a, argc, argv);
-
 	printf("Stack A Before: \n");
 	print_stack(stack_a);
 	printf("____________________\n");
-
-
 	if (ft_stacksize(stack_a) <= 3)
 		sort_first_numbers(&stack_a);
 	else
 		sort_all_nbrs(&stack_a, &stack_b);
-
-
-
 	printf("____________________\nStack A After: \n");
 	print_stack(stack_a);
 	printf("____________________\n");

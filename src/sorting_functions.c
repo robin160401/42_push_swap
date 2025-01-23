@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:39:35 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/23 10:22:24 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/23 14:20:49 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ int	sort_3_numbers(t_stack **stack)
 	if ((*stack)->nbr > (*stack)->next->nbr
 		&& (*stack)->nbr > (*stack)->next->next->nbr
 		&& (*stack)->next->nbr < (*stack)->next->next->nbr)
-		rotate(stack);
+		rotate(stack, 1);
 	else if ((*stack)->nbr < (*stack)->next->nbr
 		&& (*stack)->next->nbr > (*stack)->next->next->nbr
 		&& (*stack)->nbr < (*stack)->next->next->nbr)
 	{
-		reverse_rotate(stack);
+		reverse_rotate(stack, 1);
 		swap(stack);
 	}
 	else if ((*stack)->nbr > (*stack)->next->nbr
 		&& (*stack)->next->nbr > (*stack)->next->next->nbr)
 	{
 		swap(stack);
-		reverse_rotate(stack);
+		reverse_rotate(stack, 1);
 	}
 	else if ((*stack)->nbr < (*stack)->next->nbr
 		&& (*stack)->next->nbr > (*stack)->next->next->nbr
 		&& (*stack)->nbr > (*stack)->next->next->nbr)
-		reverse_rotate(stack);
+		reverse_rotate(stack, 1);
 	else if ((*stack)->nbr > (*stack)->next->nbr
 		&& (*stack)->next->nbr < (*stack)->next->next->nbr
 		&& (*stack)->nbr < (*stack)->next->next->nbr)

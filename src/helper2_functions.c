@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:18:51 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/23 10:47:23 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:24:21 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ int	set_current_indexes(t_stack *stack)
 		return (0);
 	while (stack)
 	{
-		i = stack->nbr;
+		stack->current_index = i;
 		if (i <= median)
-			stack->over_median = 1;
-		else
 			stack->over_median = 0;
+		else
+			stack->over_median = 1;
 		stack = stack->next;
+		i++;
 	}
 	return (1);
 }
@@ -49,25 +50,22 @@ int	set_current_indexes(t_stack *stack)
 t_stack	*get_highest_index(t_stack *stack)
 {
 	int		big;
-	t_stack	*temp;
+	t_stack	*node;
 
 	if (stack == NULL)
 		return (0);
 	big = INT_MIN;
-	temp = stack;
-	while (stack != NULL)
+	node = NULL;
+	while (stack)
 	{
-		if ((stack->nbr) > big)
+		if (stack->nbr > big)
+		{
 			big = stack->nbr;
+			node = stack;
+		}
 		stack = stack->next;
 	}
-	while (temp)
-	{
-		if (stack->nbr == big)
-			return (temp);
-		temp = temp->next;
-	}
-	return (NULL);
+	return (node);
 }
 
 void	set_target_a(t_stack *stack_a, t_stack *stack_b)
@@ -79,6 +77,7 @@ void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 	while (stack_a)
 	{
 		best = INT_MIN;
+		target = NULL;
 		temp = stack_b;
 		while (temp)
 		{
@@ -89,7 +88,7 @@ void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 			}
 			temp = temp->next;
 		}
-		if (best == INT_MIN)
+		if (!target)
 			stack_a->target_node = get_highest_index(stack_b);
 		else
 			stack_a->target_node = target;
@@ -107,12 +106,12 @@ void	find_less_operations(t_stack *stack_a, t_stack *stack_b)
 	while (stack_a)
 	{
 		stack_a->operations = stack_a->current_index;
-		if (!(stack_a->over_median))
+		if (stack_a->over_median == 1)
 			stack_a->operations = size_a - stack_a->current_index;
-		if (stack_a->target_node->over_median)
+		if (stack_a->target_node->over_median == 1)
 			stack_a->operations += stack_a->target_node->current_index;
 		else
-			stack_a->operations += size_b - stack_a->target_node->current_index;
+			stack_a->operations += size_b - stack_a->target_node->current_index; // eentuell b raus
 		stack_a = stack_a->next;
 	}
 }
