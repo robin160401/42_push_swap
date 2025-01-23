@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:37:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/16 16:55:50 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/22 17:26:37 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ t_stack	*ft_newstacknode(int nbr, char stack)
 		return (NULL);
 	new->nbr = nbr;
 	new->stack = stack;
-	new->index = INT_MAX;
-	new->indexed = 0;
 	new->next = NULL;
+	new->operations = 0;
+	new->current_index = 0;
+	new->over_median = 0;
+	new->target_node = NULL;
+	new->lowest_operations = 0;
 	return (new);
 }
 

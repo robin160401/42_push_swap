@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:17:51 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/22 14:39:14 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/23 10:44:34 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,14 @@ t_stack	*get_lowest_index(t_stack *stack)
 	temp = stack;
 	while (stack != NULL)
 	{
-		if ((stack->index) < low)
-			low = stack->index;
+		if ((stack->nbr) < low)
+			low = stack->nbr;
 		stack = stack->next;
 	}
 	while (temp)
 	{
-		if (temp->index == low)
+		if (temp->nbr == low)
 			return (temp);
-
 		temp = temp->next;
 	}
 	return (NULL);
@@ -49,7 +48,7 @@ void	set_target_b(t_stack *stack_a, t_stack *stack_b)
 		temp = stack_a;
 		while (temp)
 		{
-			if (temp->nbr < stack_b->nbr && temp->nbr < best)
+			if (temp->nbr > stack_b->nbr && temp->nbr < best)
 			{
 				best = temp->nbr;
 				target = temp;
@@ -79,6 +78,7 @@ void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
 
 void	low_to_top(t_stack **stack_a)
 {
+	printf("Hi");
 	while ((*stack_a)->nbr != get_lowest_index(*stack_a)->nbr)
 	{
 		if (get_lowest_index(*stack_a)->over_median)

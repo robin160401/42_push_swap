@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:12:29 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/22 14:09:06 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/22 17:35:39 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,19 @@ void	move_a_to_b(t_stack **stack_a, t_stack **stack_b)
 	{
 		rotate(stack_a);
 		rotate(stack_b);
-		write(1, "rr", 2);
+		write(1, "rr\n", 3);
 	}
 	else if (!(lowest_ops->over_median)
 		&& !(lowest_ops->target_node->over_median))
 	{
 		reverse_rotate(stack_a);
 		reverse_rotate(stack_b);
-		write(1, "rrr", 3);
+		write(1, "rrr\n", 4);
 	}
 	rotate_stack(stack_a, lowest_ops);
 	rotate_stack(stack_b, lowest_ops->target_node);
 	push_pop(stack_b, stack_a);
 }
-
 
 void	set_stack_a(t_stack *stack_a, t_stack *stack_b)
 {

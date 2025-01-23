@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:18:51 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/22 14:48:57 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/23 10:47:23 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	is_sorted(t_stack **stack)
 		return (0);
 	while ((*stack)->next)
 	{
-		if ((*stack)->nbr > (*stack)->next->nbr)
-			return (1);
+		if ((*stack)->nbr != ((*stack)->nbr - (*stack)->next->nbr - 1))
+			return (0);
 		*stack = (*stack)->next;
 	}
-	return (0);
+	return (1);
 }
 
 int	set_current_indexes(t_stack *stack)
@@ -36,13 +36,12 @@ int	set_current_indexes(t_stack *stack)
 		return (0);
 	while (stack)
 	{
-		stack->index = i;
+		i = stack->nbr;
 		if (i <= median)
 			stack->over_median = 1;
 		else
 			stack->over_median = 0;
 		stack = stack->next;
-		i++;
 	}
 	return (1);
 }
@@ -58,15 +57,14 @@ t_stack	*get_highest_index(t_stack *stack)
 	temp = stack;
 	while (stack != NULL)
 	{
-		if ((stack->index) > big)
-			big = stack->index;
+		if ((stack->nbr) > big)
+			big = stack->nbr;
 		stack = stack->next;
 	}
 	while (temp)
 	{
-		if (stack->index == big)
+		if (stack->nbr == big)
 			return (temp);
-
 		temp = temp->next;
 	}
 	return (NULL);
@@ -109,7 +107,7 @@ void	find_less_operations(t_stack *stack_a, t_stack *stack_b)
 	while (stack_a)
 	{
 		stack_a->operations = stack_a->current_index;
-		if (!stack_a->over_median)
+		if (!(stack_a->over_median))
 			stack_a->operations = size_a - stack_a->current_index;
 		if (stack_a->target_node->over_median)
 			stack_a->operations += stack_a->target_node->current_index;
