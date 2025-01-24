@@ -6,20 +6,11 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:28:00 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/24 16:56:01 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/24 22:56:40 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_node *stack)
-{
-	while (stack)
-	{
-		printf("Number: %d | Stack: %c\n", stack->nbr, stack->stack);
-		stack = stack->next;
-	}
-}
 
 int	main(int argc, char **argv)
 {
@@ -34,22 +25,28 @@ int	main(int argc, char **argv)
 		create_stack_a_from_string(&stack_a, argv);
 	else
 		create_stack_a(&stack_a, argc, argv);
-	//Print Stack before
-	printf("Stack A Before: \n");
-	print_stack(stack_a);
-	printf("____________________\n");
-	// if (ft_stacksize(stack_a) <= 3)
-	// 	sort_first_numbers(&stack_a);
-	// else
-	// 	sort_all_nbrs(&stack_a, &stack_b);
-	operationtest(stack_a, stack_b);
 
-	//Print Stack after
-	printf("____________________\nStack A After: \n");
-	print_stack(stack_a);
-	printf("____________________\n");
-	printf("____________________\nStack B After: \n");
-	print_stack(stack_b);
-	printf("____________________\n");
-	return (0);
+		
+	// //Print Stack before
+	// printf("Stack A Before: \n");
+	// print_stack(stack_a);
+	// printf("____________________\n");
+
+	//Code Here
+	
+	if (ft_stacksize(stack_a) <= 3)
+		sort_first_numbers(&stack_a);
+	else
+		sort_all_nbrs(&stack_a, &stack_b);
+
+
+
+	// //Print Stack after
+	// printf("____________________\nStack A After: \n");
+	// print_stack(stack_a);
+	// printf("____________________\n");
+	// printf("____________________\nStack B After: \n");
+	// print_stack(stack_b);
+	// printf("____________________\n");
+	// return (0);
 }

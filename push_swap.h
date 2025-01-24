@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/24 16:53:21 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/24 22:52:00 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 # include "../libft/libft.h"
 # include <limits.h>
+#	include <stdbool.h>
 
 typedef struct s_node
 {
 	int				nbr;
 	char			stack;
-	struct s_node	*target_node;
+	int				index;
+	int				chunk;
 	struct s_node	*next;
 }					t_node;
 
@@ -48,11 +50,21 @@ void	create_stack_a_from_string(t_node **stack_a, char **argv);
 
 //Helper Functions
 int		is_sorted(t_node **stack);
+int		set_index(t_node *stack);
+void	set_all_indexes(t_node *stack);
+void	set_all_chunks(t_node *stack);
+void	push_chunks_to_b(t_node **stack_a, t_node **stack_b, int chunks);
+void	push_chunks_to_b_last(t_node **stack_a, t_node **stack_b);
+void	push_b_to_a(t_node **stack_a, t_node **stack_b);
+
 
 //Sort Functions
 int		sort_first_numbers(t_node **stack_a);
 void	sort_3_numbers(t_node **stack_a);
+void	sort_all_nbrs(t_node **stack_a, t_node **stack_b);
 
 //Tests
 void	operationtest(t_node **stack_a, t_node **stack_b);
+void	print_stack(t_node *stack);
+
 #endif
