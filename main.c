@@ -6,13 +6,13 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:28:00 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/23 16:45:10 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/24 16:56:01 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *stack)
+void	print_stack(t_node *stack)
 {
 	while (stack)
 	{
@@ -23,8 +23,8 @@ void	print_stack(t_stack *stack)
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_node	*stack_a;
+	t_node	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -34,13 +34,17 @@ int	main(int argc, char **argv)
 		create_stack_a_from_string(&stack_a, argv);
 	else
 		create_stack_a(&stack_a, argc, argv);
+	//Print Stack before
 	printf("Stack A Before: \n");
 	print_stack(stack_a);
 	printf("____________________\n");
-	if (ft_stacksize(stack_a) <= 3)
-		sort_first_numbers(&stack_a);
-	else
-		sort_all_nbrs(&stack_a, &stack_b);
+	// if (ft_stacksize(stack_a) <= 3)
+	// 	sort_first_numbers(&stack_a);
+	// else
+	// 	sort_all_nbrs(&stack_a, &stack_b);
+	operationtest(stack_a, stack_b);
+
+	//Print Stack after
 	printf("____________________\nStack A After: \n");
 	print_stack(stack_a);
 	printf("____________________\n");

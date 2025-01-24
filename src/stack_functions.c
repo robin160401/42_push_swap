@@ -6,31 +6,26 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:37:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/22 17:26:37 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/24 16:41:20 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*ft_newstacknode(int nbr, char stack)
+t_node	*ft_newstacknode(int nbr, char stack)
 {
-	t_stack	*new;
+	t_node	*new;
 
-	new = malloc(sizeof(t_stack));
+	new = malloc(sizeof(t_node));
 	if (!new)
 		return (NULL);
 	new->nbr = nbr;
 	new->stack = stack;
 	new->next = NULL;
-	new->operations = 0;
-	new->current_index = 0;
-	new->over_median = 0;
-	new->target_node = NULL;
-	new->lowest_operations = 0;
 	return (new);
 }
 
-t_stack	*ft_stacklast(t_stack *stack)
+t_node	*ft_stacklast(t_node *stack)
 {
 	if (stack == NULL)
 		return (NULL);
@@ -39,7 +34,7 @@ t_stack	*ft_stacklast(t_stack *stack)
 	return (stack);
 }
 
-void	ft_stackadd_back(t_stack **stack, t_stack *new)
+void	ft_stackadd_back(t_node **stack, t_node *new)
 {
 	if (!stack || !new)
 		return ;
@@ -51,7 +46,7 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	ft_stacklast(*stack)->next = new;
 }
 
-int	ft_stacksize(t_stack *stack)
+int	ft_stacksize(t_node *stack)
 {
 	int	i;
 
@@ -64,7 +59,7 @@ int	ft_stacksize(t_stack *stack)
 	return (i);
 }
 
-void	ft_stackadd_front(t_stack **stack, t_stack *new)
+void	ft_stackadd_front(t_node **stack, t_node *new)
 {
 	new->next = *stack;
 	*stack = new;

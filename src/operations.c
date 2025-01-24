@@ -6,37 +6,37 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:00:12 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/23 14:19:26 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/24 16:52:09 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	swap(t_stack **stack)
+void	swap(t_node **stack, int write_s)
 {
-	t_stack	*temp;
-	t_stack	*temp2;
+	t_node	*temp;
+	t_node	*temp2;
 
 	if (ft_stacksize(*stack) < 2)
-		return (-1);
+		return ;
 	temp = *stack;
 	temp2 = temp->next;
 	temp->next = temp2->next;
 	temp2->next = temp;
 	*stack = temp2;
-	if (temp2->stack == 'A')
+	if (temp2->stack == 'A' && write_s == 1)
 		write(1, "sa\n", 3);
-	else
+	else if (temp2->stack == 'B' && write_s == 1)
 		write(1, "sb\n", 3);
-	return (0);
+	return ;
 }
 
-int	push_pop(t_stack **pushstack, t_stack **popstack)
+void	push_pop(t_node **pushstack, t_node **popstack)
 {
-	t_stack	*temp;
+	t_node	*temp;
 
 	if (popstack == NULL)
-		return (-1);
+		return ;
 	temp = *popstack;
 	if (temp->stack == 'A')
 	{
@@ -52,47 +52,45 @@ int	push_pop(t_stack **pushstack, t_stack **popstack)
 	if (*pushstack == NULL)
 	{
 		temp->next = NULL;
-		*pushstack = set_stack(temp);
+		*pushstack = temp;
+		temp->stack = 'B';
 	}
 	else
 		ft_stackadd_front(pushstack, temp);
-	return (0);
+	return ;
 }
 
-int	rotate(t_stack **stack, int write_r)
+void	rotate(t_node **stack, int write_r)
 {
-	t_stack	*temp;
+	t_node	*temp;
 
 	if (ft_stacksize(*stack) < 2)
-		return (-1);
+		return ;
 	temp = *stack;
-	if (temp->stack == 'A' && write_r)
+	if (temp->stack == 'A' && write_r == 1)
 		write(1, "ra\n", 3);
-	else if (temp->stack == 'B' && write_r)
+	else if (temp->stack == 'B' && write_r == 1)
 		write(1, "rb\n", 3);
 	*stack = temp->next;
 	temp->next = NULL;
 	ft_stackadd_back(stack, temp);
-	return (0);
+	return ;
 }
 
-int	reverse_rotate(t_stack **stack, int write_rr)
+void	reverse_rotate(t_node **stack, int write_rr)
 {
-	t_stack	*temp1;
-	t_stack	*temp2;
+	t_node	*temp1;
+	t_node	*temp2;
 
-	if (ft_stacksize(*stack) < 2)
-		return (-1);
 	temp1 = ft_stacklast(*stack);
 	temp2 = *stack;
-	if (temp2->stack == 'A' && write_rr)
+	if (temp2->stack == 'A' && write_rr == 1)
 		write(1, "rra\n", 4);
-	else if (temp2->stack == 'B' && write_rr)
+	else if (temp2->stack == 'B' && write_rr == 1)
 		write(1, "rrb\n", 4);
 	while (temp2->next != temp1)
 		temp2 = temp2->next;
 	temp2->next = NULL;
 	temp1->next = *stack;
 	*stack = temp1;
-	return (0);
 }

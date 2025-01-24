@@ -3,6 +3,7 @@
 		"push_swap.h": "c",
 		"iterator": "c",
 		"memory": "c",
-		"utility": "c"
+		"utility": "c",
+		"algorithm": "c"
 	}
 }

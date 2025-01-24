@@ -6,13 +6,13 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:37:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/22 15:28:01 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/24 16:31:28 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	create_stack_a(t_stack **stack_a, int argc, char **argv)
+void	create_stack_a(t_node **stack_a, int argc, char **argv)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ void	create_stack_a(t_stack **stack_a, int argc, char **argv)
 	}
 }
 
-void	create_stack_a_from_string(t_stack **stack_a, char **argv)
+void	create_stack_a_from_string(t_node **stack_a, char **argv)
 {
 	char	**numbers;
 	int		i;
