@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:39:35 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/24 22:52:37 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/24 23:46:21 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	sort_all_nbrs(t_node **stack_a, t_node **stack_b)
 	push_chunks_to_b_last(stack_a, stack_b);
 	sort_3_numbers(stack_a);
 	push_b_to_a(stack_a, stack_b);
-
+	
 }

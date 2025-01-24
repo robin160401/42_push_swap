@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:28:00 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/24 22:56:40 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/24 23:38:34 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	main(int argc, char **argv)
 		create_stack_a(&stack_a, argc, argv);
 
 		
-	// //Print Stack before
-	// printf("Stack A Before: \n");
-	// print_stack(stack_a);
-	// printf("____________________\n");
+	//Print Stack before
+	printf("Stack A Before: \n");
+	print_stack(stack_a);
+	printf("____________________\n");
 
 	//Code Here
 	
@@ -41,12 +41,12 @@ int	main(int argc, char **argv)
 
 
 
-	// //Print Stack after
-	// printf("____________________\nStack A After: \n");
-	// print_stack(stack_a);
-	// printf("____________________\n");
-	// printf("____________________\nStack B After: \n");
-	// print_stack(stack_b);
-	// printf("____________________\n");
-	// return (0);
+	//Print Stack after
+	printf("____________________\nStack A After: \n");
+	print_stack(stack_a);
+	printf("____________________\n");
+	printf("____________________\nStack B After: \n");
+	print_stack(stack_b);
+	printf("____________________\n");
+	return (0);
 }
