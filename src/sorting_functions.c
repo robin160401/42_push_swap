@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:39:35 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/27 14:21:17 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/27 16:54:29 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,22 @@ void	sort_5_numbers(t_node **stack_a, t_node **stack_b)
 	sort_3_numbers(stack_a);
 	push_pop(stack_a, stack_b);
 	push_pop(stack_a, stack_b);
+}
+
+void	sort_chunks(t_node **stack_a, t_node **stack_b)
+{
+	t_chunk	chunk_all;
+
+	chunk_all.location = TOP_A;
+	chunk_all.size = ft_stacksize(*stack_a);
+	rec_sive_sort_chunk(stack_a, stack_b, &chunk_all);
+}
+
+void	rec_sort_chunk(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
+{
+	t_split	dest;
+
+	set_to_sort_location()
 }
 
 void	sort_all_nbrs(t_node **stack_a, t_node **stack_b)

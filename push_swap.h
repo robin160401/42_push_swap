@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/27 14:38:36 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/27 16:16:42 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_node
 	int				current_index;
 	int				chunk;
 	struct s_node	*next;
+	t_location		location;
 }					t_node;
 
 typedef struct s_chunk
@@ -79,6 +80,8 @@ int		push_chunks_to_b(t_node **stack_a, t_node **stack_b, int chunks);
 void	push_chunks_to_b_last(t_node **stack_a, t_node **stack_b);
 void	push_b_to_a(t_node **stack_a, t_node **stack_b);
 void	set_all_current_indexes(t_node *stack);
+int		ft_chunk_size(t_node *stack, t_location location);
+
 
 
 

@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:37:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/27 12:17:29 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/27 15:58:19 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_node	*ft_newstacknode(int nbr, char stack)
 	new->final_index = -1;
 	new->current_index = -1;
 	new->chunk = 0;
+	new->location = BOTTOM_A;
 	return (new);
 }
 
