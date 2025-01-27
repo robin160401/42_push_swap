@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 11:00:07 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/24 19:37:43 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/27 14:21:30 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_stack(t_node *stack)
 {
 	while (stack)
 	{
-		printf("Number: %d | Index: %d | Chunk %d\n", stack->nbr, stack->index ,stack->chunk);
+		printf("Number: %d | Index: %d | Chunk %d\n", stack->nbr, stack->final_index ,stack->chunk);
 		stack = stack->next;
 	}
 }

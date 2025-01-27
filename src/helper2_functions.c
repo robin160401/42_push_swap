@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:18:51 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/24 23:46:01 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/27 12:18:52 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	set_all_chunks(t_node *stack)
 	int	chunk2;
 	int	chunk3;
 
-	chunk1 = ft_stacksize(stack) / 5;
+	chunk3 = ft_stacksize(stack);
+	chunk1 = chunk3 / 3;
 	chunk2 = chunk1 * 2;
-	chunk3 = chunk1 * 3;
 	while (stack)
 	{
 		if (stack->nbr < chunk1)
 			stack->chunk = 1;
 		else if (stack->nbr < chunk2)
 			stack->chunk = 2;
-		else if (stack->nbr < chunk3)
+		else
 			stack->chunk = 3;
 		stack = stack->next;
 	}
@@ -86,17 +86,17 @@ int	push_chunks_to_b(t_node **stack_a, t_node **stack_b, int chunk)
 	return (i);
 }
 
-void	push_chunks_to_b_last(t_node **stack_a, t_node **stack_b)
-{
-	while (ft_stacksize(*stack_a) > 3)
-	{
-		if ((*stack_a)->index == 0 || (*stack_a)->index == 1
-			|| (*stack_a)->index == 2)
-		{
-			rotate(stack_a, 1);
-			continue ;
-		}
-		else
-			push_pop(stack_b, stack_a);
-	}
-}
+// void	push_chunks_to_b_last(t_node **stack_a, t_node **stack_b)
+// {
+// 	while (ft_stacksize(*stack_a) > 3)
+// 	{
+// 		if ((*stack_a)->final_index == 0 || (*stack_a)->final_index == 1
+// 			|| (*stack_a)->final_index == 2)
+// 		{
+// 			rotate(stack_a, 1);
+// 			continue ;
+// 		}
+// 		else
+// 			push_pop(stack_b, stack_a);
+// 	}
+// }

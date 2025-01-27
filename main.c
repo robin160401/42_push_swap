@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:28:00 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/24 23:38:34 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/27 14:29:09 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,10 @@ int	main(int argc, char **argv)
 
 	//Code Here
 	
-	if (ft_stacksize(stack_a) <= 3)
-		sort_first_numbers(&stack_a);
+	if (ft_stacksize(stack_a) <= 5)
+		sort_first_numbers(&stack_a, &stack_b);
 	else
 		sort_all_nbrs(&stack_a, &stack_b);
-
-
 
 	//Print Stack after
 	printf("____________________\nStack A After: \n");
