@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/27 16:16:42 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:57:36 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef enum e_location
 typedef struct s_node
 {
 	int				nbr;
-	char			stack;
 	int				final_index;
 	int				current_index;
 	int				chunk;
@@ -50,7 +49,7 @@ typedef struct s_split
 }	t_split;
 
 //Node Functions
-t_node	*ft_newstacknode(int nbr, char stack);
+t_node	*ft_newstacknode(int nbr);
 void	ft_stackadd_front(t_node **stack, t_node *new);
 void	ft_stackadd_back(t_node **stack, t_node *new);
 t_node	*ft_stacklast(t_node *stack);
@@ -59,10 +58,10 @@ void	change_stack_name(t_node *node);
 
 //Operations
 void	swap(t_node **stack_a, int write_s);
-void	push_pop(t_node **pushstack, t_node **popstack);
+void	push_pop(t_node **pushstack, t_node **popstack, t_location to);
 void	push_swap(t_node **stack_a, t_node **stack_b);
-void	rotate(t_node **stack, int write_r);
-void	reverse_rotate(t_node **stack, int write_rr);
+void	rotate(t_node **stack, int write_r, t_location to);
+void	reverse_rotate(t_node **stack, int write_rr, t_location to);
 void	rotate_both_stacks(t_node **stack_a, t_node **stack_b);
 void	reverse_rotate_both_stacks(t_node **stack_a, t_node **stack_b);
 void	swap_both_stacks(t_node **stack_a, t_node **stack_b);
@@ -75,14 +74,14 @@ void	create_stack_a_from_string(t_node **stack_a, char **argv);
 int		is_sorted(t_node **stack);
 int		set_index(t_node *stack);
 void	set_all_indexes(t_node *stack);
-void	set_all_chunks(t_node *stack);
-int		push_chunks_to_b(t_node **stack_a, t_node **stack_b, int chunks);
-void	push_chunks_to_b_last(t_node **stack_a, t_node **stack_b);
 void	push_b_to_a(t_node **stack_a, t_node **stack_b);
 void	set_all_current_indexes(t_node *stack);
 int		ft_chunk_size(t_node *stack, t_location location);
-
-
+void	set_to_sort_location(t_node **stack_a,
+			t_node **stack_b, t_chunk *to_sort);
+void	rec_sort_chunk(t_node **stack_a, t_node **stack_b, t_chunk *to_sort);
+t_node	*get_first_chunk_node(t_node *stack, t_chunk *chunk);
+int		chunk_value(t_node *stack_a, t_node *stack_b, t_chunk *chunk, int n);
 
 
 //Sort Functions

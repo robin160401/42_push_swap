@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:37:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/24 16:31:28 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:42:31 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	create_stack_a(t_node **stack_a, int argc, char **argv)
 	while (i < argc)
 	{
 		if (i == 1)
-			*stack_a = ft_newstacknode(atoi(argv[i]), 'A');
+			*stack_a = ft_newstacknode(atoi(argv[i]));
 		else
-			ft_stackadd_back(stack_a, ft_newstacknode(atoi(argv[i]), 'A'));
+			ft_stackadd_back(stack_a, ft_newstacknode(atoi(argv[i])));
 		i++;
 	}
 }
@@ -37,9 +37,9 @@ void	create_stack_a_from_string(t_node **stack_a, char **argv)
 	while (numbers[i])
 	{
 		if (i == 0)
-			*stack_a = ft_newstacknode(atoi(numbers[i]), 'A');
+			*stack_a = ft_newstacknode(atoi(numbers[i]));
 		else
-			ft_stackadd_back(stack_a, ft_newstacknode(atoi(numbers[i]), 'A'));
+			ft_stackadd_back(stack_a, ft_newstacknode(atoi(numbers[i])));
 		i++;
 	}
 }

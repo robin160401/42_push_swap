@@ -6,13 +6,13 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:37:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/27 15:58:19 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:41:47 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_node	*ft_newstacknode(int nbr, char stack)
+t_node	*ft_newstacknode(int nbr)
 {
 	t_node	*new;
 
@@ -20,7 +20,6 @@ t_node	*ft_newstacknode(int nbr, char stack)
 	if (!new)
 		return (NULL);
 	new->nbr = nbr;
-	new->stack = stack;
 	new->next = NULL;
 	new->final_index = -1;
 	new->current_index = -1;
