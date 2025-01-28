@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:28:27 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 15:05:14 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/28 20:32:47 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	move_from_top_a(t_node **stack_a, t_node **stack_b, t_location to)
 {
 	if (to == TOP_B)
-		push_pop(stack_b, stack_a, TOP_B);
+		push_pop(stack_b, stack_a, to);
 	else if (to == BOTTOM_A)
 		rotate(stack_a, 1, to);
 	else if (to == BOTTOM_B)
 	{
-		push_pop(stack_b, stack_a, BOTTOM_B);
+		push_pop(stack_b, stack_a, to);
 		rotate(stack_b, 1, to);
 	}
 }
@@ -33,7 +33,7 @@ void	move_from_top_b(t_node **stack_a, t_node **stack_b, t_location to)
 		rotate(stack_b, 1, to);
 	else if (to == BOTTOM_A)
 	{
-		push_pop(stack_a, stack_b, BOTTOM_A);
+		push_pop(stack_a, stack_b, to);
 		rotate(stack_a, 1, to);
 	}
 }

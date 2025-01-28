@@ -4,6 +4,8 @@
 		"iterator": "c",
 		"memory": "c",
 		"utility": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"__tree": "c",
+		"bitset": "c"
 	}
 }

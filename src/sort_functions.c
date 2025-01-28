@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:24:18 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 19:02:24 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/28 20:21:00 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ void	rec_sort_chunk(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
 			sort_one(stack_a, stack_b, to_sort);
 		return ;
 	}
-	chunk_split()
+	chunk_split(stack_a, stack_b, to_sort, &dest);
+	rec_sort_chunk(stack_a, stack_b, &dest.max);
+	rec_sort_chunk(stack_a, stack_b, &dest.mid);
+	rec_sort_chunk(stack_a, stack_b, &dest.min);
 }
 
 void	sort_all_nbrs(t_node **stack_a, t_node **stack_b)

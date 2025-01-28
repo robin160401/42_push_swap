@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:00:12 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 15:06:49 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/28 20:04:17 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	push_pop(t_node **pushstack, t_node **popstack, t_location to)
 	if (popstack == NULL)
 		return ;
 	temp = *popstack;
+	if (!temp)
+		return ;
 	if (temp->location == TOP_A || temp->location == BOTTOM_A)
 	{
 		write(1, "pb\n", 3);
@@ -89,6 +91,8 @@ void	reverse_rotate(t_node **stack, int write_rr, t_location to)
 
 	temp1 = ft_stacklast(*stack);
 	temp2 = *stack;
+	if (!temp2)
+		return ;
 	if ((temp2->location == TOP_A || temp2->location == BOTTOM_A)
 		&& write_rr == 1)
 		write(1, "rra\n", 4);

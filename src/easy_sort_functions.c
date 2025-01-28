@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:54:44 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 15:46:15 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/28 20:01:08 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	easy_sort_second(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
 
 void	easy_sort(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
 {
+	if (!*stack_a || !*stack_b)
+		return ;
 	while (to_sort->location != TOP_A && to_sort->size)
 	{
 		if ((*stack_a)->final_index

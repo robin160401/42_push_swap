@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 18:52:06 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/28 20:19:35 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ void	rec_sort_chunk(t_node **stack_a, t_node **stack_b, t_chunk *to_sort);
 t_node	*get_first_chunk_node(t_node *stack, t_chunk *chunk);
 int		chunk_value(t_node *stack_a, t_node *stack_b, t_chunk *chunk, int n);
 int		lowest_chunk_index(t_node **stack_a, t_node **stack_b, t_chunk *chunk);
-int		current_chunk_size(t_node *stack, t_chunk *to_sort);
+int		current_chunk_size(t_node *stack);
+int		highest_chunk_index(t_node **stack_a, t_node **stack_b, t_chunk *chunk);
 
 
 //Sort Functions
@@ -93,13 +94,16 @@ void	sort_all_nbrs(t_node **stack_a, t_node **stack_b);
 //Sort Number Functions
 void	sort_one(t_node **stack_a, t_node **stack_b, t_chunk *to_sort);
 void	sort_two(t_node **stack_a, t_node **stack_b, t_chunk *to_sort);
+void	sort_three(t_node **stack_a, t_node **stack_b, t_chunk *to_sort);
 void	sort_3_numbers(t_node **stack_a, t_location to);
 void	sort_5_numbers(t_node **stack_a, t_node **stack_b, t_location to);
 
 //Move
 int		move_from_to(t_node **stack_a, t_node **stack_b,
 					t_location from, t_location to);
-
+//Chunk split
+void	chunk_split(t_node **stack_a, t_node **stack_b,
+					t_chunk *to_split, t_split *dest);
 
 //EasySort
 void	easy_sort(t_node **stack_a, t_node **stack_b, t_chunk *to_sort);
