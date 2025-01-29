@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 20:19:35 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 17:21:58 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,9 @@ void	change_stack_name(t_node *node);
 //Operations
 void	swap(t_node **stack_a, int write_s);
 void	push_pop(t_node **pushstack, t_node **popstack, t_location to);
-void	push_swap(t_node **stack_a, t_node **stack_b);
 void	rotate(t_node **stack, int write_r, t_location to);
 void	reverse_rotate(t_node **stack, int write_rr, t_location to);
 void	rotate_both_stacks(t_node **stack_a, t_node **stack_b);
-void	reverse_rotate_both_stacks(t_node **stack_a, t_node **stack_b);
-void	swap_both_stacks(t_node **stack_a, t_node **stack_b);
 
 //Create Stacks
 void	create_stack_a(t_node **stack_a, int argc, char **argv);
@@ -77,15 +74,14 @@ void	set_all_indexes(t_node *stack);
 void	push_b_to_a(t_node **stack_a, t_node **stack_b);
 void	set_all_current_indexes(t_node *stack);
 int		ft_chunk_size(t_node *stack, t_location location);
-void	set_to_sort_location(t_node **stack_a,
-			t_node **stack_b, t_chunk *to_sort);
+void	set_to_sort_location(t_chunk *to_sort);
 void	rec_sort_chunk(t_node **stack_a, t_node **stack_b, t_chunk *to_sort);
 t_node	*get_first_chunk_node(t_node *stack, t_chunk *chunk);
 int		chunk_value(t_node *stack_a, t_node *stack_b, t_chunk *chunk, int n);
-int		lowest_chunk_index(t_node **stack_a, t_node **stack_b, t_chunk *chunk);
 int		current_chunk_size(t_node *stack);
-int		highest_chunk_index(t_node **stack_a, t_node **stack_b, t_chunk *chunk);
-
+int		lowest_chunk_index(t_node *stack_a, t_node *stack_b, t_chunk *chunk);
+int		highest_chunk_index(t_node *stack_a, t_node *stack_b, t_chunk *chunk);
+int		chunk_index(t_node **stack_a, t_node **stack_b, t_chunk *chunk);
 
 //Sort Functions
 int		sort_first_numbers(t_node **stack_a, t_node **stack_b);

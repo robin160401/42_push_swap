@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:04:16 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 15:45:23 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 17:15:51 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,22 @@ int	is_sorted(t_node **stack)
 
 int	set_index(t_node *stack)
 {
-	int			biggest;
+	int			lowest;
 	static int	i = 0;
 	t_node		*temp;
 
 	temp = stack;
-	biggest = INT_MIN;
+	lowest = INT_MAX;
 	while (stack)
 	{
-		if (stack->nbr > biggest && stack->final_index == -1)
-			biggest = stack->nbr;
+		if (stack->nbr < lowest && stack->final_index == -1)
+			lowest = stack->nbr;
 		stack = stack->next;
 	}
 	stack = temp;
 	while (stack)
 	{
-		if (biggest == stack->nbr)
+		if (lowest == stack->nbr)
 			stack->final_index = i;
 		stack = stack->next;
 	}

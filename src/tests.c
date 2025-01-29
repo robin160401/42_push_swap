@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 11:00:07 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 15:08:54 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 13:49:32 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	operationtest(t_node **stack_a, t_node **stack_b)
 
 void	print_stack(t_node *stack)
 {
+	if (!stack)
+		printf("No stack found!!\n");
 	while (stack)
 	{
 		printf("Number: %d | Index: %d | Chunk %d\n", stack->nbr, stack->final_index, stack->location);

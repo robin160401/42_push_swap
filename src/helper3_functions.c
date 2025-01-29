@@ -6,12 +6,11 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:12:29 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 20:08:40 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 18:18:57 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
 
 void	set_current_index(t_node *stack)
 {
@@ -49,57 +48,32 @@ void	set_all_current_indexes(t_node *stack)
 	}
 }
 
-int	lowest_chunk_index(t_node **stack_a, t_node **stack_b, t_chunk *chunk)
-{
-	int	lowest;
 
-	lowest = INT_MAX;
-	if (chunk->location == TOP_A || chunk->location == BOTTOM_A)
-	{
-		while (*stack_a)
-		{
-			if ((*stack_a)->location == chunk->location
-				&& (*stack_a)->final_index < lowest)
-				lowest = (*stack_a)->final_index;
-			*stack_a = (*stack_a)->next;
-		}
-	}
-	else
-	{
-		while (*stack_b)
-		{
-			if ((*stack_b)->location == chunk->location
-				&& (*stack_b)->final_index < lowest)
-				lowest = (*stack_b)->final_index;
-			*stack_a = (*stack_b)->next;
-		}
-	}
-	return (lowest);
-}
 
-int	highest_chunk_index(t_node **stack_a, t_node **stack_b, t_chunk *chunk)
+int	highest_chunk_index(t_node *stack_a, t_node *stack_b, t_chunk *chunk)
 {
 	int	highest;
 
 	highest = INT_MIN;
 	if (chunk->location == TOP_A || chunk->location == BOTTOM_A)
 	{
-		while (*stack_a)
+		while (stack_a)
 		{
-			if ((*stack_a)->location == chunk->location
-				&& (*stack_a)->nbr > highest)
-				highest = (*stack_a)->nbr;
-			*stack_a = (*stack_a)->next;
+			if (stack_a->location == chunk->location
+				&& stack_a->final_index > highest)
+				highest = stack_a->final_index;
+			stack_a = stack_a->next;
 		}
+		return (highest);
 	}
 	else
 	{
-		while (*stack_b)
+		while (stack_b)
 		{
-			if ((*stack_b)->location == chunk->location
-				&& (*stack_b)->final_index < highest)
-				highest = (*stack_b)->final_index;
-			*stack_a = (*stack_b)->next;
+			if (stack_b->location == chunk->location
+				&& stack_b->final_index > highest)
+				highest = stack_b->final_index;
+			stack_b = stack_b->next;
 		}
 	}
 	return (highest);

@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:24:18 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 20:21:00 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 18:24:54 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	rec_sort_chunk(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
 {
 	t_split	dest;
 
-	set_to_sort_location(stack_a, stack_b, to_sort);
-	easy_sort(stack_a, stack_b, to_sort);
+	set_to_sort_location(to_sort);
+	// printf("Chunk to sort: %d\n", to_sort->location);
+	// printf("to sort size: %d\n", to_sort->size);
 	if (to_sort->size <= 3)
 	{
 		if (to_sort->size == 3)

@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:39:35 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 15:26:57 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 17:39:20 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	sort_two(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
 		move_from_to(stack_a, stack_b, to_sort->location, TOP_A);
 		move_from_to(stack_a, stack_b, to_sort->location, TOP_A);
 	}
-	if ((*stack_a)->final_index < (*stack_a)->next->final_index)
+	if ((*stack_a)->final_index > (*stack_a)->next->final_index)
 		swap(stack_a, 1);
 	to_sort->size -= 2;
 }

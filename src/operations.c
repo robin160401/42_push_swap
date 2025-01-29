@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:00:12 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 20:04:17 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 17:47:07 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ void	reverse_rotate(t_node **stack, int write_rr, t_location to)
 	else if ((temp2->location == TOP_B || temp2->location == BOTTOM_B)
 		&& write_rr == 1)
 		write(1, "rrb\n", 4);
+	if (!temp2->next)
+	{
+		(*stack)->location = to;
+		return ;
+	}
 	while (temp2->next != temp1)
 		temp2 = temp2->next;
 	temp2->next = NULL;

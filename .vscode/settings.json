@@ -6,6 +6,7 @@
 		"utility": "c",
 		"algorithm": "c",
 		"__tree": "c",
-		"bitset": "c"
+		"bitset": "c",
+		"limits": "c"
 	}
 }

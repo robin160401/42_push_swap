@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 19:03:17 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 20:38:44 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 18:21:32 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	set_split_location(t_location location, t_chunk *min,
 	}
 }
 
-void	set_third_pivots(t_location location, int crt_size,
+void	set_pivots(t_location location, int crt_size,
 						int *pivot_1, int *pivot_2)
 {
 	*pivot_2 = crt_size / 3;
@@ -67,34 +67,40 @@ void	chunk_split(t_node **stack_a, t_node **stack_b,
 {
 	int	pivot_1;
 	int	pivot_2;
-	int	highest;
-	int	next;
+	int	highest_index;
+	int	current_index;
 
 	set_chunk_sizes_to_0(&dest->min, &dest->mid, &dest->max);
 	set_split_location(to_split->location, &dest->min, &dest->mid, &dest->max);
-	set_third_pivots(to_split->location, to_split->size, &pivot_1, &pivot_2);
-	highest = highest_chunk_index(stack_a, stack_b, to_split);
+	set_pivots(to_split->location, to_split->size, &pivot_1, &pivot_2);
+	highest_index = highest_chunk_index(*stack_a, *stack_b, to_split);
+	// printf("Highest Index: %d\n", highest_index);
 	while (to_split->size--)
 	{
-		next = chunk_value(*stack_a, *stack_b, to_split, 1);
-		if (next > highest - pivot_2)
+		current_index = chunk_index(stack_a, stack_b, to_split);
+		// printf("Current Index: %d\n", current_index);
+		if (current_index > highest_index - pivot_2)
 		{
+			// printf("move to max\n");
 			dest->max.size += move_from_to(stack_a, stack_b, to_split->location,
 					dest->max.location);
-			printf("HEllo There 1\n");
 		}
-		else if (next > highest - pivot_1)
+		else if (current_index > highest_index - pivot_1)
 		{
+			// printf("move to mid\n");
 			dest->mid.size += move_from_to(stack_a, stack_b, to_split->location,
-					dest->max.location);
-			printf("HEllo There 2\n");
+					dest->mid.location);
 		}
 		else
 		{
+			// printf("move to min\n");
 			dest->min.size += move_from_to(stack_a, stack_b, to_split->location,
-					dest->max.location);
-			printf("HEllo There 3\n");
+					dest->min.location);
 		}
+		// printf("_______________\n");
+		// print_stack(*stack_a);
+		// printf("_______________\n");
+		// print_stack(*stack_b);
 	}
 }
 

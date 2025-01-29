@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:54:44 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/28 20:01:08 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 18:24:47 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,4 @@ void	easy_sort_second(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
 	else if (to_sort->location == BOTTOM_B)
 		handle_bot_b(stack_a, stack_b, to_sort);
 	to_sort->size--;
-}
-
-void	easy_sort(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
-{
-	if (!*stack_a || !*stack_b)
-		return ;
-	while (to_sort->location != TOP_A && to_sort->size)
-	{
-		if ((*stack_a)->final_index
-			== chunk_value(*stack_a, *stack_b, to_sort, 1) - 1)
-			sort_one(stack_a, stack_b, to_sort);
-		else if ((*stack_a)->final_index
-			== chunk_value(*stack_a, *stack_b, to_sort, 2) - 1)
-			easy_sort_second(stack_a, stack_b, to_sort);
-		else
-			break ;
-	}
 }
