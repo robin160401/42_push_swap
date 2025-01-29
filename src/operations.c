@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:00:12 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/29 17:47:07 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 19:04:23 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ void	push_pop(t_node **pushstack, t_node **popstack, t_location to)
 {
 	t_node	*temp;
 
-	if (popstack == NULL)
-		return ;
 	temp = *popstack;
-	if (!temp)
-		return ;
 	if (temp->location == TOP_A || temp->location == BOTTOM_A)
 	{
 		write(1, "pb\n", 3);

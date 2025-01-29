@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:26:46 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/29 18:22:56 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 18:33:10 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,23 +114,11 @@ void	sort_three(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
 
 	highest = highest_chunk_index(*stack_a, *stack_b, to_sort);
 	if (to_sort->location == TOP_A)
-	{
 		sort_three_top_a(stack_a, stack_b, to_sort, highest);
-		// printf("sort to A Top\n");
-	}
 	else if (to_sort->location == BOTTOM_A)
-	{
 		sort_three_bot_a(stack_a, stack_b, to_sort, highest);
-		// printf("sort to A Bot\n");
-	}
 	else if (to_sort->location == TOP_B)
-	{
 		sort_three_top_b(stack_a, stack_b, to_sort, highest);
-		// printf("sort to B Top\n");
-	}
 	else if (to_sort->location == BOTTOM_B)
-	{
 		sort_three_bot_b(stack_a, stack_b, to_sort, highest);
-		// printf("sort to B Bot\n");
-	}
 }

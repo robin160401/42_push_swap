@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:04:16 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/29 17:15:51 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 19:11:11 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ int	sort_first_numbers(t_node **stack_a, t_node **stack_b)
 	return (1);
 }
 
-int	is_sorted(t_node **stack)
+bool	checker(t_node **stack)
 {
 	if (!(*stack))
 		return (0);
 	while ((*stack)->next)
 	{
 		if ((*stack)->nbr != ((*stack)->nbr - (*stack)->next->nbr - 1))
-			return (0);
+			return (false);
 		*stack = (*stack)->next;
 	}
-	return (1);
+	return (true);
 }
 
 int	set_index(t_node *stack)

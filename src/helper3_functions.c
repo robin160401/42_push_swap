@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:12:29 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/29 18:18:57 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/29 19:06:57 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	set_all_current_indexes(t_node *stack)
 		stack = stack->next;
 	}
 }
-
-
 
 int	highest_chunk_index(t_node *stack_a, t_node *stack_b, t_chunk *chunk)
 {
