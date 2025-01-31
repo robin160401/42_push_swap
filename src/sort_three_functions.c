@@ -6,27 +6,36 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:26:46 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/29 18:33:10 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/31 11:11:25 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 void	sort_three_top_a(t_node **stack_a, t_node **stack_b,
-					t_chunk *to_sort, int highest)
+					t_chunk *to_sort)
 {
-	if ((*stack_a)->final_index == highest)
+	int	a;
+	int	b;
+	int	c;
+
+	a = (*stack_a)->final_index;
+	b = (*stack_a)->next->final_index;
+	c = (*stack_a)->next->next->final_index;
+	// printf("I sort Stack a Top");
+	// printf("I sorted: %d and %d and %d\n", a, b, c);
+	if (a > b && a > c)
 	{
-		swap(stack_a, 1);
-		rotate(stack_a, 1, TOP_A);
-		swap(stack_a, 1);
-		reverse_rotate(stack_a, 1, TOP_A);
+		swap_a(stack_a);
+		rotate_a(stack_a, TOP_A);
+		swap_a(stack_a);
+		reverse_rotate_a(stack_a, TOP_A);
 	}
-	else if ((*stack_a)->next->final_index == highest)
+	else if (a < b && a > c)
 	{
-		rotate(stack_a, 1, TOP_A);
-		swap(stack_a, 1);
-		reverse_rotate(stack_a, 1, TOP_A);
+		rotate_a(stack_a, TOP_A);
+		swap_a(stack_a);
+		reverse_rotate_a(stack_a, TOP_A);
 	}
 	to_sort->location = TOP_A;
 	to_sort->size--;
@@ -34,48 +43,68 @@ void	sort_three_top_a(t_node **stack_a, t_node **stack_b,
 }
 
 void	sort_three_top_b(t_node **stack_a, t_node **stack_b,
-					t_chunk *to_sort, int highest)
+					t_chunk *to_sort)
 {
-	push_pop(stack_a, stack_b, TOP_A);
-	if ((*stack_b)->final_index == highest)
+	int	a;
+	int	b;
+	int	c;
+
+	a = (*stack_b)->final_index;
+	b = (*stack_b)->next->final_index;
+	c = (*stack_b)->next->next->final_index;
+	// printf("I sort stack b Top: %d\n", (*stack_a)->final_index);
+	push_a(stack_a, stack_b, TOP_A);
+	if (a > b && a > c)
 	{
-		push_pop(stack_a, stack_b, TOP_A);
-		swap(stack_a, 1);
+		push_a(stack_a, stack_b, TOP_A);
+		swap_a(stack_a);
 	}
-	else if ((*stack_b)->next->final_index == highest)
+	else if (a < b && a > c)
 	{
-		swap(stack_b, 1);
-		push_pop(stack_a, stack_b, TOP_A);
-		swap(stack_a, 1);
+		swap_b(stack_b);
+		push_a(stack_a, stack_b, TOP_A);
+		swap_a(stack_a);
 	}
 	else
-		push_pop(stack_a, stack_b, TOP_A);
-	push_pop(stack_a, stack_b, TOP_A);
+		push_a(stack_a, stack_b, TOP_A);
+	push_a(stack_a, stack_b, TOP_A);
 	to_sort->location = TOP_A;
 	to_sort->size--;
 	sort_two(stack_a, stack_b, to_sort);
 }
 
 void	sort_three_bot_a(t_node **stack_a, t_node **stack_b,
-					t_chunk *to_sort, int highest)
+					t_chunk *to_sort)
 {
-	reverse_rotate(stack_a, 1, TOP_A);
-	reverse_rotate(stack_a, 1, TOP_A);
-	if ((*stack_a)->final_index == highest)
+	int	a;
+	int	b;
+	int	c;
+
+	c = (*stack_a)->next->next->final_index;
+	b = (*stack_a)->next->final_index;
+	a = (*stack_a)->final_index;
+	// printf("I sort stack a Bot: %d\n", (*stack_a)->final_index);
+	// printf("I sorted: %d and %d and %d\n", a, b, c);
+	reverse_rotate_a(stack_a, TOP_A);
+	reverse_rotate_a(stack_a, TOP_A);
+	if (a > b && a > c)
 	{
-		swap(stack_a, 1);
-		reverse_rotate(stack_a, 1, TOP_A);
+		swap_a(stack_a);
+		reverse_rotate_a(stack_a, TOP_A);
+		// printf("HII1\n\n\n");
 	}
-	else if ((*stack_a)->next->final_index == highest)
+	else if (a < b && a < c)
 	{
-		reverse_rotate(stack_a, 1, TOP_A);
+		reverse_rotate_a(stack_a, TOP_A);
+		// printf("HII2\n\n\n");
 	}
 	else
 	{
-		push_pop(stack_b, stack_a, TOP_A);
-		reverse_rotate(stack_a, 1, TOP_A);
-		swap(stack_a, 1);
-		push_pop(stack_a, stack_b, TOP_A);
+		push_b(stack_b, stack_a, TOP_A);
+		reverse_rotate_a(stack_a, TOP_A);
+		swap_a(stack_a);
+		push_a(stack_a, stack_b, TOP_A);
+		// printf("HII3\n\n\n");
 	}
 	to_sort->location = TOP_A;
 	to_sort->size--;
@@ -83,25 +112,34 @@ void	sort_three_bot_a(t_node **stack_a, t_node **stack_b,
 }
 
 void	sort_three_bot_b(t_node **stack_a, t_node **stack_b,
-					t_chunk *to_sort, int highest)
+					t_chunk *to_sort)
 {
-	reverse_rotate(stack_b, 1, TOP_B);
-	reverse_rotate(stack_b, 1, TOP_B);
-	if ((*stack_b)->final_index == highest)
+	int	a;
+	int	b;
+	int	c;
+
+	a = (*stack_b)->final_index;
+	b = (*stack_b)->next->final_index;
+	c = (*stack_b)->next->next->final_index;
+	// printf("I sort stack b bot: %d\n", (*stack_b)->final_index);
+	// printf("I sorted: %d and %d and %d\n", a, b, c);
+	reverse_rotate_b(stack_b, TOP_B);
+	reverse_rotate_b(stack_b, TOP_B);
+	if (a > b && a > c)
 	{
-		push_pop(stack_a, stack_b, TOP_B);
-		reverse_rotate(stack_b, 1, TOP_B);
+		push_a(stack_a, stack_b, TOP_B);
+		reverse_rotate_b(stack_b, TOP_B);
 	}
-	else if ((*stack_b)->next->final_index == highest)
+	else if (a < b && a < c)
 	{
-		swap(stack_b, 1);
-		push_pop(stack_a, stack_b, TOP_B);
-		reverse_rotate(stack_b, 1, TOP_B);
+		swap_b(stack_b);
+		push_a(stack_a, stack_b, TOP_B);
+		reverse_rotate_b(stack_b, TOP_B);
 	}
 	else
 	{
-		reverse_rotate(stack_b, 1, TOP_B);
-		push_pop(stack_a, stack_b, TOP_B);
+		reverse_rotate_b(stack_b, TOP_B);
+		push_a(stack_a, stack_b, TOP_B);
 	}
 	to_sort->location = TOP_B;
 	to_sort->size--;
@@ -110,15 +148,12 @@ void	sort_three_bot_b(t_node **stack_a, t_node **stack_b,
 
 void	sort_three(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
 {
-	int	highest;
-
-	highest = highest_chunk_index(*stack_a, *stack_b, to_sort);
 	if (to_sort->location == TOP_A)
-		sort_three_top_a(stack_a, stack_b, to_sort, highest);
+		sort_three_top_a(stack_a, stack_b, to_sort);
 	else if (to_sort->location == BOTTOM_A)
-		sort_three_bot_a(stack_a, stack_b, to_sort, highest);
+		sort_three_bot_a(stack_a, stack_b, to_sort);
 	else if (to_sort->location == TOP_B)
-		sort_three_top_b(stack_a, stack_b, to_sort, highest);
+		sort_three_top_b(stack_a, stack_b, to_sort);
 	else if (to_sort->location == BOTTOM_B)
-		sort_three_bot_b(stack_a, stack_b, to_sort, highest);
+		sort_three_bot_b(stack_a, stack_b, to_sort);
 }

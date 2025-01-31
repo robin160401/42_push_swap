@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:04:16 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/29 19:11:11 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/30 20:55:52 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	sort_first_numbers(t_node **stack_a, t_node **stack_b)
 	if (ft_stacksize((*stack_a)) == 2)
 	{
 		if ((*stack_a)->nbr > (*stack_a)->next->nbr)
-			swap(stack_a, 1);
+			swap_a(stack_a);
 	}
 	else if (ft_stacksize(*stack_a) == 3)
 		sort_3_numbers(stack_a, TOP_A);
