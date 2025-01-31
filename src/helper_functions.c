@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:04:16 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/30 20:55:52 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/31 17:30:20 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,11 @@ int	sort_first_numbers(t_node **stack_a, t_node **stack_b)
 	}
 	else if (ft_stacksize(*stack_a) == 3)
 		sort_3_numbers(stack_a, TOP_A);
+	else if (ft_stacksize(*stack_a) == 4)
+		sort_4_numbers(stack_a, stack_b);
 	else
 		sort_5_numbers(stack_a, stack_b, TOP_A);
 	return (1);
-}
-
-bool	checker(t_node **stack)
-{
-	if (!(*stack))
-		return (0);
-	while ((*stack)->next)
-	{
-		if ((*stack)->nbr != ((*stack)->nbr - (*stack)->next->nbr - 1))
-			return (false);
-		*stack = (*stack)->next;
-	}
-	return (true);
 }
 
 int	set_index(t_node *stack)

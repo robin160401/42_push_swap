@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:37:39 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/30 14:12:56 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/31 17:15:58 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	create_stack_a(t_node **stack_a, int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_str_is_int(argv[i]))
+		if (!ft_str_is_int(argv[i]) || ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
 			return (ft_putendl_fd("Error", 2), -1);
 		else if (i == 1)
-			*stack_a = ft_newstacknode(ft_atoi(argv[i]));
+			*stack_a = ft_newstacknode(ft_atoi(argv[i]));	
 		else
 			ft_stackadd_back(stack_a, ft_newstacknode(ft_atoi(argv[i])));
 		i++;
@@ -35,21 +35,38 @@ int	create_stack_a_from_string(t_node **stack_a, char **argv)
 	char	**numbers;
 	int		i;
 
+	if (ft_strlen(argv[1]) == 0)
+		return (ft_putendl_fd("Error", 2), -1);
 	numbers = ft_split(argv[1], ' ');
 	i = 0;
 	while (numbers[i])
 	{
-		if (!ft_str_is_int(numbers[i]))
+		if (!ft_str_is_int(numbers[i]) || ft_atol(numbers[i]) > INT_MAX || ft_atol(numbers[i]) < INT_MIN)
 			return (ft_putendl_fd("Error", 2), -1);
 		else if (i == 0)
-		{
 			*stack_a = ft_newstacknode(ft_atoi(numbers[i]));
-			if (!(*stack_a)->nbr)
-				return (ft_putendl_fd("Error", 2), -1);
-		}
 		else
 			ft_stackadd_back(stack_a, ft_newstacknode(ft_atoi(numbers[i])));
 		i++;
 	}
+	return (0);
+}
+
+int	create_stacks_throw_errors(char **argv, t_node **stack_a, int argc)
+{
+	if (argc < 2)
+		return (ft_putendl_fd("Error", 2), -1);
+	if (argc == 2)
+	{
+		if (create_stack_a_from_string(stack_a, argv) == -1)
+			return (-1);
+	}
+	else
+	{
+		if (create_stack_a(stack_a, argc, argv) == -1)
+			return (-1);
+	}
+	if (has_errors(*stack_a))
+		return (ft_putendl_fd("Error", 2), free_stack(stack_a), -1);
 	return (0);
 }

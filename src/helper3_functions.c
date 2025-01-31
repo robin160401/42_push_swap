@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:12:29 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/30 20:44:56 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/31 16:57:05 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,45 @@ int	highest_chunk_index(t_node *stack_a, t_node *stack_b, t_chunk *chunk)
 		}
 	}
 	return (highest);
+}
+
+
+static int	ft_skipspaces(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+	{
+		i++;
+	}
+	return (i);
+}
+
+long	ft_atol(const char *str)
+{
+	long	result;
+	int		i;
+	int		sign;
+
+	result = 0;
+	sign = 1;
+	i = ft_skipspaces(str);
+	if (str[i] == '\0')
+		return (0);
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	if (i == ft_skipspaces(str))
+		return (0);
+	return (sign * result);
 }

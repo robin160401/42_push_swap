@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/30 21:11:09 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/31 17:33:23 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_node
 	int				final_index;
 	int				current_index;
 	int				chunk;
-	char			stack;
 	struct s_node	*next;
 	t_location		location;
 }					t_node;
@@ -71,10 +70,12 @@ void	reverse_rotate_b(t_node **stack, t_location to);
 //Error Check
 int		check_errors(t_node *stack);
 bool	ft_str_is_int(const char *str);
+bool	has_errors(t_node *stack_a);
 
 //Create Stacks
 int		create_stack_a(t_node **stack_a, int argc, char **argv);
 int		create_stack_a_from_string(t_node **stack_a, char **argv);
+int		create_stacks_throw_errors(char **argv, t_node **stack_a, int argc);
 
 //Helper Functions
 void	free_stack(t_node **stack);
@@ -89,6 +90,7 @@ int		chunk_value(t_node *stack_a, t_node *stack_b, t_chunk *chunk, int n);
 int		current_chunk_size(t_node *stack);
 int		highest_chunk_index(t_node *stack_a, t_node *stack_b, t_chunk *chunk);
 int		chunk_index(t_node **stack_a, t_node **stack_b, t_chunk *chunk);
+long	ft_atol(const char *str);
 
 //Sort Functions
 int		sort_first_numbers(t_node **stack_a, t_node **stack_b);
@@ -100,6 +102,8 @@ void	sort_two(t_node **stack_a, t_node **stack_b, t_chunk *to_sort);
 void	sort_three(t_node **stack_a, t_node **stack_b, t_chunk *to_sort);
 void	sort_3_numbers(t_node **stack_a, t_location to);
 void	sort_5_numbers(t_node **stack_a, t_node **stack_b, t_location to);
+void	sort_4_numbers(t_node **stack_a, t_node **stack_b);
+
 
 //Move
 int		move_from_to(t_node **stack_a, t_node **stack_b,

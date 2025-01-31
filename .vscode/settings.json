@@ -1,12 +1,6 @@
 {
 	"files.associations": {
-		"push_swap.h": "c",
-		"iterator": "c",
-		"memory": "c",
-		"utility": "c",
-		"algorithm": "c",
-		"__tree": "c",
-		"bitset": "c",
-		"limits": "c"
+		"queue": "c",
+		"stack": "c"
 	}
 }

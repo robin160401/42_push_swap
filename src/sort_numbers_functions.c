@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:39:35 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/31 11:03:15 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/31 17:39:39 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ void	sort_one(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
 {
 	if (to_sort->location == BOTTOM_A || to_sort->location == BOTTOM_B
 		|| to_sort->location == TOP_B)
-		{
-			move_from_to(stack_a, stack_b, to_sort->location, TOP_A);
-			// printf("I sorted %d\n", (*stack_a)->final_index);
-		}
+		move_from_to(stack_a, stack_b, to_sort->location, TOP_A);
 	to_sort->size--;
 }
 
@@ -77,9 +74,16 @@ void	sort_two(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)
 		move_from_to(stack_a, stack_b, to_sort->location, TOP_A);
 	}
 	if ((*stack_a)->final_index > (*stack_a)->next->final_index && to_sort)
-	{
-		// printf("I swapped %d with %d\n", (*stack_a)->final_index, (*stack_a)->next->final_index);
 		swap_a(stack_a);
-	}
 	to_sort->size -= 2;
+}
+
+void	sort_4_numbers(t_node **stack_a, t_node **stack_b)
+{
+	set_all_indexes(*stack_a);
+	while ((*stack_a)->final_index != 0)
+		rotate_a(stack_a, TOP_A);
+	push_b(stack_b, stack_a, TOP_A);
+	sort_3_numbers(stack_a, TOP_A);
+	push_a(stack_a, stack_b, TOP_A);
 }
