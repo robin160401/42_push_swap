@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:26:46 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/31 17:51:34 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/02 11:38:34 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,19 @@ void	sort_three_top_b(t_node **stack_a, t_node **stack_b,
 void	sort_three_bot_a(t_node **stack_a, t_node **stack_b,
 					t_chunk *to_sort)
 {
-	int	a;
-	int	b;
-	int	c;
+	t_values	compare;
 
 	reverse_rotate_a(stack_a, TOP_A);
 	reverse_rotate_a(stack_a, TOP_A);
-	b = (*stack_a)->next->final_index;
-	a = (*stack_a)->final_index;
-	c = ft_stacklast(*stack_a)->final_index;
-	if (a > b && a > c)
+	compare.a = (*stack_a)->final_index;
+	compare.b = (*stack_a)->next->final_index;
+	compare.c = ft_stacklast(*stack_a)->final_index;
+	if (compare.a > compare.b && compare.a > compare.c)
 	{
 		swap_a(stack_a);
 		reverse_rotate_a(stack_a, TOP_A);
 	}
-	else if (b > a && b > c)
+	else if (compare.b > compare.a && compare.b > compare.c)
 		reverse_rotate_a(stack_a, TOP_A);
 	else
 	{
@@ -104,21 +102,19 @@ void	sort_three_bot_a(t_node **stack_a, t_node **stack_b,
 void	sort_three_bot_b(t_node **stack_a, t_node **stack_b,
 					t_chunk *to_sort)
 {
-	int	a;
-	int	b;
-	int	c;
+	t_values	compare;
 
 	reverse_rotate_b(stack_b, TOP_B);
 	reverse_rotate_b(stack_b, TOP_B);
-	a = (*stack_b)->final_index;
-	b = (*stack_b)->next->final_index;
-	c = ft_stacklast(*stack_b)->final_index;
-	if ((*stack_b)->final_index > b && (*stack_b)->final_index > c)
+	compare.a = (*stack_b)->final_index;
+	compare.b = (*stack_b)->next->final_index;
+	compare.c = ft_stacklast(*stack_b)->final_index;
+	if (compare.a > compare.b && compare.a > compare.c)
 	{
 		push_a(stack_a, stack_b, TOP_B);
 		reverse_rotate_b(stack_b, TOP_B);
 	}
-	else if (b > a && b > c)
+	else if (compare.b > compare.a && compare.b > compare.c)
 	{
 		swap_b(stack_b);
 		push_a(stack_a, stack_b, TOP_B);
@@ -129,9 +125,8 @@ void	sort_three_bot_b(t_node **stack_a, t_node **stack_b,
 		reverse_rotate_b(stack_b, TOP_B);
 		push_a(stack_a, stack_b, TOP_B);
 	}
-	to_sort->location = TOP_B;
 	to_sort->size--;
-	sort_two(stack_a, stack_b, to_sort);
+	return (to_sort->location = TOP_B, sort_two(stack_a, stack_b, to_sort));
 }
 
 void	sort_three(t_node **stack_a, t_node **stack_b, t_chunk *to_sort)

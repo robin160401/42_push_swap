@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:12:29 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/31 16:57:05 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/02 11:39:09 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	highest_chunk_index(t_node *stack_a, t_node *stack_b, t_chunk *chunk)
 	}
 	return (highest);
 }
-
 
 static int	ft_skipspaces(const char *str)
 {

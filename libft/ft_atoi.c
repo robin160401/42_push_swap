@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:37:06 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/31 16:56:16 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/31 18:09:18 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static int	ft_skipspaces(const char *str)
 int	ft_atoi(const char *str)
 {
 	int	result;
-	int		i;
-	int		sign;
+	int	i;
+	int	sign;
 
 	result = 0;
 	sign = 1;

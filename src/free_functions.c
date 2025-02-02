@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 11:53:44 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/02 11:47:14 by rstumpf          ###   ########.fr       */
+/*   Created: 2025/01/31 18:19:54 by rstumpf           #+#    #+#             */
+/*   Updated: 2025/01/31 18:33:22 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+void	free_stack(t_node **stack)
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
+	t_node	*temp;
 
-	if (create_stacks_check_errors(argv, &stack_a, argc) == -1)
-		return (1);
-	if (ft_stacksize(stack_a) <= 5)
-		sort_first_numbers(&stack_a, &stack_b);
-	else
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
 	{
-		set_all_indexes(stack_a);
-		sort_chunks(&stack_a, &stack_b);
+		temp = (*stack)->next;
+		free(*stack);
+		*stack = temp;
 	}
-	free_stack(&stack_a);
-	free_stack(&stack_b);
-	return (0);
+	*stack = NULL;
+}
+
+void	free_split(char	**numbers)
+{
+	int	i;
+
+	i = 0;
+	while (numbers[i])
+		free(numbers[i++]);
+	free(numbers);
 }

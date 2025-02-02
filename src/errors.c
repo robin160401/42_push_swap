@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:08:56 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/31 15:19:11 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/31 18:36:17 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	ft_str_is_int(const char *str)
 bool	has_errors(t_node *stack_a)
 {
 	t_node	*checker;
-	
+
 	while (stack_a)
 	{
 		checker = stack_a->next;

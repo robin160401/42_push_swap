@@ -6,29 +6,16 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:04:16 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/31 17:30:20 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/01/31 18:43:07 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	free_stack(t_node **stack)
-{
-	t_node	*temp;
-
-	if (!stack || !(*stack))
-		return ;
-	while (*stack)
-	{
-		temp = (*stack)->next;
-		free(*stack);
-		*stack = temp;
-	}
-	*stack = NULL;
-}
-
 int	sort_first_numbers(t_node **stack_a, t_node **stack_b)
 {
+	if (ft_stacksize(*stack_a) == 1)
+		return (free_stack(stack_a), 1);
 	if (ft_stacksize((*stack_a)) == 2)
 	{
 		if ((*stack_a)->nbr > (*stack_a)->next->nbr)

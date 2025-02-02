@@ -6,14 +6,14 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:41:38 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/01/31 17:33:23 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/02 11:46:36 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
+# include "./libft/libft.h"
 # include <limits.h>
 # include <stdbool.h>
 
@@ -34,6 +34,13 @@ typedef struct s_node
 	struct s_node	*next;
 	t_location		location;
 }					t_node;
+
+typedef struct s_values
+{
+	int	a;
+	int	b;
+	int	c;
+}		t_values;
 
 typedef struct s_chunk
 {
@@ -68,18 +75,19 @@ void	rotate_b(t_node **stack, t_location to);
 void	reverse_rotate_b(t_node **stack, t_location to);
 
 //Error Check
-int		check_errors(t_node *stack);
 bool	ft_str_is_int(const char *str);
 bool	has_errors(t_node *stack_a);
 
 //Create Stacks
 int		create_stack_a(t_node **stack_a, int argc, char **argv);
 int		create_stack_a_from_string(t_node **stack_a, char **argv);
-int		create_stacks_throw_errors(char **argv, t_node **stack_a, int argc);
+int		create_stacks_check_errors(char **argv, t_node **stack_a, int argc);
+
+//Free Functions
+void	free_split(char	**numbers);
+void	free_stack(t_node **stack);
 
 //Helper Functions
-void	free_stack(t_node **stack);
-bool	checker(t_node **stack);
 int		set_index(t_node *stack);
 void	set_all_indexes(t_node *stack);
 void	set_all_current_indexes(t_node *stack);
@@ -104,20 +112,12 @@ void	sort_3_numbers(t_node **stack_a, t_location to);
 void	sort_5_numbers(t_node **stack_a, t_node **stack_b, t_location to);
 void	sort_4_numbers(t_node **stack_a, t_node **stack_b);
 
-
 //Move
 int		move_from_to(t_node **stack_a, t_node **stack_b,
 			t_location from, t_location to);
+
 //Chunk split
 void	chunk_split(t_node **stack_a, t_node **stack_b,
 			t_chunk *to_split, t_split *dest);
-
-//EasySort
-void	split_reduction(t_node **stack_a,t_node **stack_b, t_chunk *max);
-void	easy_sort(t_node **stack_a, t_node **stack_b, t_chunk *to_sort);
-
-//Tests
-void	operationtest(t_node **stack_a, t_node **stack_b);
-void	print_stack(t_node *stack);
 
 #endif
