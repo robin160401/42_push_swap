@@ -2,7 +2,7 @@ NAME            = push_swap
 LIBFT_PATH      = ./libft
 LIBFT           = $(LIBFT_PATH)/libft.a
 CC              = gcc
-CFLAGS          = -Wall -Werror -Wextra
+CFLAGS          = -Wall -Werror -Wextra -fsanitize=address -g
 RM              = rm -f
 
 # Quellen für Push-Swap

@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 11:39:57 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/02 11:40:47 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/02 15:21:28 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	rotate_b(t_node **stack, t_location to)
 	write(1, "rb\n", 3);
 	temp->location = to;
 	*stack = temp->next;
-	temp->next = NULL;
 	ft_stackadd_back(stack, temp);
-	return ;
 }
 
 void	reverse_rotate_a(t_node **stack, t_location to)

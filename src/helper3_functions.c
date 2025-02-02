@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:12:29 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/02 11:39:09 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/02 14:45:46 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	highest_chunk_index(t_node *stack_a, t_node *stack_b, t_chunk *chunk)
 		}
 		return (highest);
 	}
-	else
+	else if (chunk->location == TOP_B || chunk->location == BOTTOM_B)
 	{
-		while (stack_b)
+		while (stack_b && stack_b->location == chunk->location)
 		{
 			if (stack_b->location == chunk->location
 				&& stack_b->final_index > highest)

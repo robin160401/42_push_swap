@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:53:44 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/02 11:47:14 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/02 15:04:38 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	main(int argc, char **argv)
 	{
 		set_all_indexes(stack_a);
 		sort_chunks(&stack_a, &stack_b);
+		free_stack(&stack_b);
 	}
 	free_stack(&stack_a);
-	free_stack(&stack_b);
 	return (0);
 }

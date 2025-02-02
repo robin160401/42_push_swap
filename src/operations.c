@@ -6,7 +6,7 @@
 /*   By: rstumpf <rstumpf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:00:12 by rstumpf           #+#    #+#             */
-/*   Updated: 2025/02/02 11:40:33 by rstumpf          ###   ########.fr       */
+/*   Updated: 2025/02/02 14:58:13 by rstumpf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	swap_b(t_node **stack)
 	t_node	*temp;
 	t_node	*temp2;
 
+	if (!*stack)
+		return ;
 	if (ft_stacksize(*stack) < 2)
 		return ;
 	temp = *stack;
